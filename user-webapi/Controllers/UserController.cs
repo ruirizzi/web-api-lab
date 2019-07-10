@@ -33,7 +33,7 @@ namespace userwebapi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetUser(Int64 id)
+        public async Task<IActionResult> GetUser(Int64? id)
         {
             User user = await userRepository.GetUser(id);
 
