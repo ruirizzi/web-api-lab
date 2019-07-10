@@ -1,9 +1,9 @@
 version: '2'
  
 services:
-  userapi:
+  user-webapi:
     build:
-      context:  ./userapi
+      context:  ./user-webapi
       dockerfile: Dockerfile
     expose:
       - "5000"
@@ -15,4 +15,4 @@ services:
     ports:
       - "80:80"
     links:
-      - userapi
+      - user-webapi
