@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="..\user-webapi\Models\testDbContext.cs" Link="testDbContext.cs" />
+    <Compile Include="..\user-webapi\Models\User.cs" Link="User.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

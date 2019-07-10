@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "userapi", "userapi\userapi.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "userapi-tests", "userapi-tests\userapi-tests.csproj", "{B1E8F4FF-6593-488A-AE98-E783F5981317}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "user-webapi", "user-webapi\user-webapi.csproj", "{58D22714-5FD4-42FB-AE96-00499C5D9BD9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B1E8F4FF-6593-488A-AE98-E783F5981317}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1E8F4FF-6593-488A-AE98-E783F5981317}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1E8F4FF-6593-488A-AE98-E783F5981317}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58D22714-5FD4-42FB-AE96-00499C5D9BD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58D22714-5FD4-42FB-AE96-00499C5D9BD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58D22714-5FD4-42FB-AE96-00499C5D9BD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58D22714-5FD4-42FB-AE96-00499C5D9BD9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
