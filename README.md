@@ -39,13 +39,17 @@ All the tests are on the ``userapi-tests`` project inside the folder with the sa
 
 To run the tests, you can simply ``~\dotnet run`` inside that folder. Also, if using Visual Studio 2017+, you can open the whole solution and run tests on the ``userapi-tests`` project:
 
+![how to run tests from solution explorer](https://i.imgur.com/jGGFtGL.png)
+
 ## References
-- [https://codeshare.co.uk/blog/how-to-set-up-continuous-deployment-for-mvc-and-umbraco-using-appveyor/](https://codeshare.co.uk/blog/how-to-set-up-continuous-deployment-for-mvc-and-umbraco-using-appveyor/)
+- https://codeshare.co.uk/blog/how-to-set-up-continuous-deployment-for-mvc-and-umbraco-using-appveyor/
 - https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx
 - https://www.sep.com/sep-blog/2017/02/27/nginx-reverse-proxy-to-asp-net-core-separate-docker-containers
 - https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api
 - https://github.com/mmacneil/ApiIntegrationTestSamples/tree/0b3f268b7f300bbf4cb7772b27836f61326850a5
 - https://fullstackmark.com/post/20/painless-integration-testing-with-aspnet-core-web-api
+- http://www.mukeshkumar.net/articles/dotnetcore/crud-operation-in-asp-net-core-web-api-with-entity-framework-core
+- https://www.c-sharpcorner.com/article/crud-operations-unit-testing-in-asp-net-core-web-api-with-xunit/
 
 ## License
 [![badge](https://img.shields.io/github/license/ruirizzi/web-api-lab.svg?color=blue&style=popout-square)](https://github.com/ruirizzi/web-api-lab/blob/master/LICENSE)

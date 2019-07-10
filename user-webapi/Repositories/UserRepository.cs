@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using userwebapi.ViewModel;
 using userwebapi.Models;
 
 namespace userwebapi.Repositories
