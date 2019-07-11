@@ -1,6 +1,6 @@
 # web-api-lab
 
-[![Build status](https://img.shields.io/appveyor/ci/HumanAftrAll/web-api-lab.svg?style=flat-square)](https://ci.appveyor.com/project/HumanAftrAll/web-api-lab) [![Build status](https://img.shields.io/appveyor/ci/HumanAftrAll/web-api-lab/master.svg?style=flat-square&label=master)](https://ci.appveyor.com/project/HumanAftrAll/web-api-lab/branch/master)
+[![Build status](https://img.shields.io/appveyor/ci/HumanAftrAll/web-api-lab.svg?style=flat-square)](https://ci.appveyor.com/project/HumanAftrAll/web-api-lab) [![Master status](https://img.shields.io/appveyor/ci/HumanAftrAll/web-api-lab/master.svg?style=flat-square&label=master)](https://ci.appveyor.com/project/HumanAftrAll/web-api-lab/branch/master) [![Test Status](https://img.shields.io/appveyor/tests/HumanAftrAll/web-api-lab.svg?style=flat-square)](https://img.shields.io/appveyor/tests/HumanAftrAll/web-api-lab.svg?style=flat-square)
 >Lab repository to test out Docker webapi develoment, testing and CI.
 
 ## Why?
@@ -42,7 +42,7 @@ To run the tests, you can simply ``~\dotnet run`` inside that folder. Also, if u
 ![how to run tests from solution explorer](https://i.imgur.com/jGGFtGL.png)
 
 ## References
-- https://codeshare.co.uk/blog/how-to-set-up-continuous-deployment-for-mvc-and-umbraco-using-appveyor/
+- [https://codeshare.co.uk/blog/how-to-set-up-continuous-deployment-for-mvc-and-umbraco-using-appveyor/](https://codeshare.co.uk/blog/how-to-set-up-continuous-deployment-for-mvc-and-umbraco-using-appveyor/)
 - https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx
 - https://www.sep.com/sep-blog/2017/02/27/nginx-reverse-proxy-to-asp-net-core-separate-docker-containers
 - https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api
@@ -50,6 +50,7 @@ To run the tests, you can simply ``~\dotnet run`` inside that folder. Also, if u
 - https://fullstackmark.com/post/20/painless-integration-testing-with-aspnet-core-web-api
 - http://www.mukeshkumar.net/articles/dotnetcore/crud-operation-in-asp-net-core-web-api-with-entity-framework-core
 - https://www.c-sharpcorner.com/article/crud-operations-unit-testing-in-asp-net-core-web-api-with-xunit/
+- https://www.dannyallegrezza.com/blog/2019-03-03-configuring-net-core-2-1-projects-on-appveyor/
 
 ## License
 [![badge](https://img.shields.io/github/license/ruirizzi/web-api-lab.svg?color=blue&style=popout-square)](https://github.com/ruirizzi/web-api-lab/blob/master/LICENSE)
