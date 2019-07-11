@@ -22,7 +22,14 @@ namespace userwebapi.tests
                 );
 
             context.SaveChanges();
+        }
 
+        public void Clear(testDbContext context)
+        {
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
+
+            context.SaveChanges();
         }
     }
 }

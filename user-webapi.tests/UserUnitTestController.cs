@@ -28,25 +28,12 @@ namespace userwebapi.tests
         {
             var context = new testDbContext(dbContextOptions);
             DummyDataDBInitializer db = new DummyDataDBInitializer();
+
             db.Seed(context);
 
             repository = new UserRepository(context);
         }
         #region GetTests
-        [Fact]
-        public async void Task_GetUserById_Return_OkResult()
-        {
-            //Arrange  
-            UserController controller = new UserController(repository);
-            Int64 userId = 2;
-
-            //Act  
-            IActionResult data = await controller.GetUser(userId);
-
-            //Assert  
-            Assert.IsType<OkObjectResult>(data);
-        }
-
         [Fact]
         public async void Task_GetUserById_Return_NotFound()
         {
@@ -60,7 +47,6 @@ namespace userwebapi.tests
             //Assert  
             Assert.IsType<NotFoundResult>(data);
         }
-
         [Fact]
         public async void Task_GetUserById_Return_BadRequestResult()
         {
@@ -74,7 +60,6 @@ namespace userwebapi.tests
             //Assert  
             Assert.IsType<BadRequestResult>(data);
         }
-
         [Fact]
         public async void Task_GetUserById_MatchResult()
         {
@@ -96,7 +81,41 @@ namespace userwebapi.tests
             Assert.Equal("Ken Thompson", user.Name);
 
         }
+        [Fact]
+        public async void Task_GetUsers_ReturnOk()
+        {
+            //Arrange
+            UserController controller = new UserController(repository);
 
+            //Act
+            IActionResult data = await controller.GetUsers();
+
+            //Assert
+            Assert.IsType<OkObjectResult>(data);
+        }
+        [Fact]
+        public async void Task_GetUsers_ReturnNotFound()
+        {
+            //Arrange
+            UserController controller = new UserController(repository);
+
+            //Act
+            IActionResult data = await controller.GetUsers();
+
+            //Assert
+            Assert.IsType<OkObjectResult>(data);
+            OkObjectResult okResult = data.Should().BeOfType<OkObjectResult>().Subject;
+            List<User> users = okResult.Value.Should().BeAssignableTo<List<User>>().Subject;
+
+            foreach (User user in users)
+            {
+                await controller.DeleteUser(user.Id);
+            }
+
+            data = await controller.GetUsers();
+            Assert.IsType<NotFoundResult>(data);
+
+        }
         #endregion
     }
 }

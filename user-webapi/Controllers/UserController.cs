@@ -24,7 +24,7 @@ namespace userwebapi.Controllers
         {
             List<User> users = await userRepository.GetUsers();
 
-            if (users == null)
+            if (users == null || users.Count == 0)
             {
                 return NotFound();
             }
@@ -42,7 +42,6 @@ namespace userwebapi.Controllers
 
             try
             {
-
                 User user = await userRepository.GetUser(id);
 
                 if (user == null)
