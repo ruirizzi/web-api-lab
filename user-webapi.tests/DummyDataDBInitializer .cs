@@ -12,16 +12,8 @@ namespace userwebapi.tests
 
         public void Seed(testDbContext context)
         {
-            //context.Database.EnsureDeleted();
+            context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
-
-            try
-            {
-                //context.User.Find()
-            }
-            catch (Exception)
-            {
-            }
 
             context.User.AddRange(
                 new User() { Name = "Ken Thompson", UserName = "kthompson", BirthDate = new DateTime(1943,2,4), IsActive = true, PassWordHash = "psHash", PassWordSalt = "pwSalt", CreationDate = DateTime.Now },
