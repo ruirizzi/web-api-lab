@@ -5,13 +5,13 @@ namespace userwebapi.Models
 {
     public partial class User
     {
-        public long Id { get; set; }
-        public string Name { get; set; }
-        public string UserName { get; set; }
+        public Int64 Id { get; set; }
+        public String Name { get; set; }
+        public String UserName { get; set; }
         public DateTime? BirthDate { get; set; }
-        public string PassWordHash { get; set; }
-        public string PassWordSalt { get; set; }
+        public String PassWordHash { get; set; }
+        public String PassWordSalt { get; set; }
         public DateTime? CreationDate { get; set; }
-        public bool? IsActive { get; set; }
+        public Boolean? IsActive { get; set; }
     }
 }

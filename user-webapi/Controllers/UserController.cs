@@ -62,21 +62,25 @@ namespace userwebapi.Controllers
         {
             if (ModelState.IsValid)
             {
-                Int64 userId = await userRepository.AddUser(user);
+                try
+                {
+                    Int64 userId = await userRepository.AddUser(user);
 
-                if (userId > 0)
-                {
-                    return Ok(userId);
+                    if (userId > 0)
+                    {
+                        return Ok(userId);
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
                 }
-                else
+                catch (Exception)
                 {
-                    return NotFound();
+                    return BadRequest();
                 }
             }
-            else
-            {
-                return BadRequest();
-            }
+            return BadRequest();
         }
 
         [HttpPut]
