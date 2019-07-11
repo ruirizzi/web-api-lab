@@ -23,12 +23,4 @@ artifacts:
    name: user-webapi
    type: WebDeployPackage
 clone_depth: 1
-test_script:
-  # restore packages for our unit tests
-  - cmd: dotnet restore ./user-webapitests/user-webapitests.csproj --verbosity m
-  # run the unit tests (requires changing into the test directory)
-  - cmd: cd user-webapitests
-  - cmd: dotnet test
-on_finish :
-  # any cleanup in here
 deploy: off

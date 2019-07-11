@@ -13,29 +13,12 @@ namespace userwebapitests
 {
     public class UserControllerUnitTest
     {
-        [Fact]
-        public async Task TestGetUsersAsync()
-        {
-            // Arrange
-            var dbContext = DbContextMocker.GetTestDbContext(nameof(TestGetUsersAsync));
-            var controller = new UserController(new UserRepository(dbContext));
-
-            // Act
-            var response = await controller.GetUsers();
-
-            dbContext.Dispose();
-
-            // Assert
-            Assert.IsType<OkObjectResult>(response);
-        }
-
-
         #region GetTests
         [Fact, Trait("Category", "Get")]
         public async void Task_GetUserById_Return_NotFound()
         {
             //Arrange  
-            var dbContext = DbContextMocker.GetTestDbContext(nameof(TestGetUsersAsync));
+            var dbContext = DbContextMocker.GetTestDbContext(nameof(Task_GetUserById_Return_NotFound));
             var controller = new UserController(new UserRepository(dbContext));
             Int64 userId = 10;
 
@@ -49,7 +32,7 @@ namespace userwebapitests
         public async void Task_GetUserById_Return_BadRequestResult()
         {
             //Arrange  
-            var dbContext = DbContextMocker.GetTestDbContext(nameof(TestGetUsersAsync));
+            var dbContext = DbContextMocker.GetTestDbContext(nameof(Task_GetUserById_Return_BadRequestResult));
             var controller = new UserController(new UserRepository(dbContext));
             Int64? userId = null;
 
@@ -63,7 +46,7 @@ namespace userwebapitests
         public async void Task_GetUserById_MatchResult()
         {
             //Arrange  
-            var dbContext = DbContextMocker.GetTestDbContext(nameof(TestGetUsersAsync));
+            var dbContext = DbContextMocker.GetTestDbContext(nameof(Task_GetUserById_MatchResult));
             var controller = new UserController(new UserRepository(dbContext));
             Int64 userId = 1;
 
@@ -85,7 +68,7 @@ namespace userwebapitests
         public async void Task_GetUsers_Return_Ok()
         {
             //Arrange
-            var dbContext = DbContextMocker.GetTestDbContext(nameof(TestGetUsersAsync));
+            var dbContext = DbContextMocker.GetTestDbContext(nameof(Task_GetUsers_Return_Ok));
             var controller = new UserController(new UserRepository(dbContext));
 
             //Act
@@ -98,7 +81,7 @@ namespace userwebapitests
         public async void Task_GetUsers_Return_NotFound()
         {
             //Arrange
-            var dbContext = DbContextMocker.GetTestDbContext(nameof(TestGetUsersAsync));
+            var dbContext = DbContextMocker.GetTestDbContext(nameof(Task_GetUsers_Return_NotFound));
             var controller = new UserController(new UserRepository(dbContext));
 
             //Act
@@ -117,6 +100,56 @@ namespace userwebapitests
             data = await controller.GetUsers();
             Assert.IsType<NotFoundResult>(data);
 
+        }
+        #endregion
+
+        #region PostTests
+        [Fact, Trait("Category", "Post")]
+        public async void Task_PostUser_Return_Ok()
+        {
+            //Arrange
+            var dbContext = DbContextMocker.GetTestDbContext(nameof(Task_PostUser_Return_Ok));
+            var controller = new UserController(new UserRepository(dbContext));
+            User user = new User()
+            {
+                Name = "Albert Einstein",
+                UserName = "aeinstein",
+                BirthDate = new DateTime(1879, 3, 14),
+                CreationDate = DateTime.Now,
+                IsActive = true,
+                PassWordHash = "pwHash",
+                PassWordSalt = "pwSalt"
+            };
+
+            //Act
+            IActionResult data = await controller.AddUser(user);
+
+            //Assert
+            Assert.IsType<OkObjectResult>(data);
+        }
+        [Fact, Trait("Category", "Post")]
+        public async void Task_PostUser_Return_BadRequestResult()
+        {
+            //Arrange
+            var dbContext = DbContextMocker.GetTestDbContext(nameof(Task_PostUser_Return_BadRequestResult));
+            var controller = new UserController(new UserRepository(dbContext));
+            User user = new User()
+            {
+                Id = 1,
+                Name = "",
+                UserName = "",
+                BirthDate = DateTime.Now,
+                CreationDate = DateTime.Now,
+                IsActive = true,
+                PassWordHash = "pwHash",
+                PassWordSalt = "pwSalt"
+            };
+
+            //Act
+            IActionResult data = await controller.AddUser(user);
+
+            //Assert
+            Assert.IsType<BadRequestResult>(data);
         }
         #endregion
     }
