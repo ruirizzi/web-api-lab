@@ -117,13 +117,12 @@ namespace userwebapi.tests
 
         }
         #endregion
-
         #region PostTests
         [Fact, Trait("Category", "Post")]
         public async void Task_PostUser_Return_Ok()
         {
             //Arrange
-            UserController controller = new UserController(repository);
+            UserController controller = new UserController(new UserRepository(new testDbContext(dbContextOptions)));
             User user = new User()
             {
                 Name = "Albert Einstein",
@@ -141,9 +140,8 @@ namespace userwebapi.tests
             //Assert
             Assert.IsType<OkObjectResult>(data);
         }
-
         [Fact, Trait("Category", "Post")]
-        public async void Task_PostUser_Return_BadRequest()
+        public async void Task_PostUser_Return_BadRequestResult()
         {
             //Arrange
             UserController controller = new UserController(repository);
@@ -165,6 +163,9 @@ namespace userwebapi.tests
             //Assert
             Assert.IsType<BadRequestResult>(data);
         }
+        #endregion
+        #region PutTests
+
         #endregion
     }
 }
