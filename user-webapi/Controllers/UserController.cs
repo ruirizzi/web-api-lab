@@ -35,24 +35,37 @@ namespace userwebapi.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUser(Int64? id)
         {
-            User user = await userRepository.GetUser(id);
-
-            if (user == null)
+            if (id == null)
             {
-                return NotFound();
+                return BadRequest();
             }
 
-            return Ok(user);
+            try
+            {
+
+                User user = await userRepository.GetUser(id);
+
+                if (user == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(user);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
         }
 
         [HttpPost]
         public async Task<IActionResult> AddUser([FromBody]User user)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 Int64 userId = await userRepository.AddUser(user);
 
-                if(userId > 0)
+                if (userId > 0)
                 {
                     return Ok(userId);
                 }

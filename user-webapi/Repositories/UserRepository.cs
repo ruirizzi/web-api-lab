@@ -51,8 +51,23 @@ namespace userwebapi.Repositories
         {
             if (db != null)
             {
-                var users = await db.User.ToListAsync();
-                return users.Where(x => x.Id == id).First();
+                //var users = await db.User.ToListAsync();
+                //return users.Where(x => x.Id == id).First();
+
+                return await (from u in db.User
+                              where u.Id == id
+                              select new User
+                              {
+                                  Id = u.Id,
+                                  Name = u.Name,
+                                  UserName = u.UserName,
+                                  BirthDate = u.BirthDate,
+                                  CreationDate = u.CreationDate,
+                                  IsActive = u.IsActive,
+                                  PassWordHash = u.PassWordHash,
+                                  PassWordSalt = u.PassWordSalt
+
+                              }).FirstOrDefaultAsync();
             }
 
             return null;

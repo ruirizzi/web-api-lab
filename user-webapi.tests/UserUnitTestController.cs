@@ -33,47 +33,47 @@ namespace userwebapi.tests
             repository = new UserRepository(context);
         }
         #region GetTests
-        //[Fact]
-        //public async void Task_GetUserById_Return_OkResult()
-        //{
-        //    //Arrange  
-        //    UserController controller = new UserController(repository);
-        //    Int64 userId = 2;
+        [Fact]
+        public async void Task_GetUserById_Return_OkResult()
+        {
+            //Arrange  
+            UserController controller = new UserController(repository);
+            Int64 userId = 2;
 
-        //    //Act  
-        //    IActionResult data = await controller.GetUser(userId);
+            //Act  
+            IActionResult data = await controller.GetUser(userId);
 
-        //    //Assert  
-        //    Assert.IsType<OkObjectResult>(data);
-        //}
+            //Assert  
+            Assert.IsType<OkObjectResult>(data);
+        }
 
-        //[Fact]
-        //public async void Task_GetUserById_Return_NotFound()
-        //{
-        //    //Arrange  
-        //    UserController controller = new UserController(repository);
-        //    Int64 userId = 10;
+        [Fact]
+        public async void Task_GetUserById_Return_NotFound()
+        {
+            //Arrange  
+            UserController controller = new UserController(repository);
+            Int64 userId = 10;
 
-        //    //Act  
-        //    var data = await controller.GetUser(userId);
+            //Act  
+            IActionResult data = await controller.GetUser(userId);
 
-        //    //Assert  
-        //    Assert.IsType<NotFoundObjectResult>(data);
-        //}
-        
-        //[Fact]
-        //public async void Task_GetUserById_Return_BadRequestResult()
-        //{
-        //    //Arrange  
-        //    UserController controller = new UserController(repository);
-        //    Int64? userId = null;
+            //Assert  
+            Assert.IsType<NotFoundResult>(data);
+        }
 
-        //    //Act  
-        //    IActionResult data = await controller.GetUser(userId);
+        [Fact]
+        public async void Task_GetUserById_Return_BadRequestResult()
+        {
+            //Arrange  
+            UserController controller = new UserController(repository);
+            Int64? userId = null;
 
-        //    //Assert  
-        //    Assert.IsType<BadRequestObjectResult>(data);
-        //}
+            //Act  
+            IActionResult data = await controller.GetUser(userId);
+
+            //Assert  
+            Assert.IsType<BadRequestResult>(data);
+        }
 
         [Fact]
         public async void Task_GetUserById_MatchResult()
