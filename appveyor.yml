@@ -27,7 +27,7 @@ test_script:
   # restore packages for our unit tests
   - cmd: dotnet restore ./user-webapi.tests/user-webapi.tests.csproj --verbosity m
   # run the unit tests (requires changing into the test directory)
-  - cmd: cd tests/UnitTests
+  - cmd: cd user-webapi.tests
   - cmd: dotnet test
 on_finish :
   # any cleanup in here
