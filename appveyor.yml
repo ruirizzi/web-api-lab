@@ -27,7 +27,7 @@ test_script:
   # restore packages for our unit tests
   - cmd: dotnet restore ./user-webapitests/user-webapitests.csproj --verbosity m
   # run the unit tests (requires changing into the test directory)
-  - cmd: cd user-webapitests/bin/Debug/netcoreapp2.1
+  - cmd: cd ./user-webapitests/bin/Debug/netcoreapp2.1
   - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUsers_Return_Ok
 on_finish :
   # any cleanup in here
