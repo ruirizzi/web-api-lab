@@ -29,7 +29,16 @@ test_script:
   # run the unit tests (requires changing into the test directory)
   - cmd: dotnet build user-webapitests/user-webapitests.csproj
   - cmd: cd user-webapitests\bin\Debug\netcoreapp2.1
+  #GetUsers
   - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUsers_Return_Ok
+  - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUsers_Return_NotFound
+  #GetUser
+  - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUserById_Return_NotFound
+  - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUserById_Return_BadRequestResult
+  - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUserById_MatchResult
+  #PostUser
+  - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_PostUser_Return_Ok
+  - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.ask_PostUser_Return_BadRequestResult
 on_finish :
   # any cleanup in here
 deploy: off
