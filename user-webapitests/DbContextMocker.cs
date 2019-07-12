@@ -12,7 +12,7 @@ namespace userwebapitests
         {
             // Create options for DbContext instance
             var options = new DbContextOptionsBuilder<testDbContext>()
-                .UseInMemoryDatabase(databaseName: dbName)
+                .UseInMemoryDatabase(dbName)
                 .Options;
 
             // Create instance of DbContext
@@ -20,6 +20,7 @@ namespace userwebapitests
 
             // Add entities in memory
             dbContext.Seed();
+
 
             return dbContext;
 

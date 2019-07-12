@@ -75,7 +75,7 @@ namespace userwebapi.Controllers
                         return NotFound();
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return BadRequest();
                 }
@@ -127,7 +127,7 @@ namespace userwebapi.Controllers
                 }
                 return Ok();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return BadRequest();
             }

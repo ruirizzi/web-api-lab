@@ -31,14 +31,20 @@ test_script:
   - cmd: cd user-webapitests\bin\Debug\netcoreapp2.1
   #GetUsers
   - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUsers_Return_Ok
-  - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUsers_Return_NotFound
+  - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUsers_Return_BadRequestResult
   #GetUser
   - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUserById_Return_NotFound
   - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUserById_Return_BadRequestResult
   - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUserById_MatchResult
   #PostUser
   - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_PostUser_Return_Ok
-  - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.ask_PostUser_Return_BadRequestResult
+  - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_PostUser_Return_BadRequestResult
+  #PutUser
+  - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_PutUser_Return_MatchData
+  - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_PutUser_Return_OkResult
+  #DeleteUser
+  - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_Delete_User_Return_OkResult
+
 on_finish :
   # any cleanup in here
 deploy: off

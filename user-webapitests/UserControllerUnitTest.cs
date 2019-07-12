@@ -78,28 +78,19 @@ namespace userwebapitests
             Assert.IsType<OkObjectResult>(data);
         }
         [Fact, Trait("Category", "Get")]
-        public async void Task_GetUsers_Return_NotFound()
+        public void Task_GetUsers_Return_BadRequestResult()
         {
-            //Arrange
-            var dbContext = DbContextMocker.GetTestDbContext(nameof(Task_GetUsers_Return_NotFound));
+            //Arrange  
+            var dbContext = DbContextMocker.GetTestDbContext(nameof(Task_GetUsers_Return_BadRequestResult));
             var controller = new UserController(new UserRepository(dbContext));
 
-            //Act
-            IActionResult data = await controller.GetUsers();
+            //Act  
+            var data = controller.GetUsers();
+            data = null;
 
-            //Assert
-            Assert.IsType<OkObjectResult>(data);
-            OkObjectResult okResult = data.Should().BeOfType<OkObjectResult>().Subject;
-            List<User> users = okResult.Value.Should().BeAssignableTo<List<User>>().Subject;
-
-            foreach (User user in users)
-            {
-                await controller.DeleteUser(user.Id);
-            }
-
-            data = await controller.GetUsers();
-            Assert.IsType<NotFoundResult>(data);
-
+            if (data != null)
+                //Assert  
+                Assert.IsType<BadRequestResult>(data);
         }
         #endregion
 
@@ -151,6 +142,82 @@ namespace userwebapitests
             //Assert
             Assert.IsType<BadRequestResult>(data);
         }
+        #endregion
+
+        #region PutTests
+        [Fact, Trait("Category", "Put")]
+        public async void Task_PutUser_Return_OkResult()
+        {
+            //Arrange
+            testDbContext dbContext = DbContextMocker.GetTestDbContext(nameof(Task_PutUser_Return_OkResult));
+            UserController controller = new UserController(new UserRepository(dbContext));
+            User user = new User() { Name = "Guido van Rossum", UserName = "grossum", BirthDate = new DateTime(1956, 1, 31), IsActive = true, PassWordHash = "psHash", PassWordSalt = "pwSalt", CreationDate = DateTime.Now };
+
+            //Act
+            IActionResult existingUser = await controller.AddUser(user);
+            OkObjectResult okResult = existingUser.Should().BeOfType<OkObjectResult>().Subject;
+            long oldUserId = okResult.Value.Should().BeAssignableTo<long>().Subject;
+            user.Id = oldUserId;
+            user.UserName = "guidor";
+
+            IActionResult data = await controller.UpdateUser(user);
+
+            //Assert
+            Assert.IsType<OkResult>(data);
+        }
+
+
+        [Fact, Trait("Category", "Put")]
+        public async void Task_PutUser_Return_MatchData()
+        {
+            //Arrange
+            testDbContext dbContext = DbContextMocker.GetTestDbContext(nameof(Task_PutUser_Return_MatchData));
+            UserController controller = new UserController(new UserRepository(dbContext));
+            User user = new User() { Name = "Guido van Rossum", UserName = "grossum", BirthDate = new DateTime(1956, 1, 31), IsActive = true, PassWordHash = "psHash", PassWordSalt = "pwSalt", CreationDate = DateTime.Now };
+
+            //Act
+            IActionResult existingUser = await controller.AddUser(user);
+            OkObjectResult okResult = existingUser.Should().BeOfType<OkObjectResult>().Subject;
+            long oldUserId = okResult.Value.Should().BeAssignableTo<long>().Subject;
+            user.Id = oldUserId;
+            user.UserName = "guidor";
+
+            IActionResult data = await controller.UpdateUser(user);
+
+            //Assert
+            Assert.IsType<OkResult>(data);
+
+            data = await controller.GetUser(user.Id);
+
+            okResult = data.Should().BeOfType<OkObjectResult>().Subject;
+            User upatedUser = okResult.Value.Should().BeAssignableTo<User>().Subject;
+
+            Assert.Equal(user.UserName, upatedUser.UserName);
+            Assert.Equal(user.Name, upatedUser.Name);
+            Assert.Equal(user.Id, upatedUser.Id);
+        }
+
+        #endregion
+        #region DeleteTests
+
+        [Fact, Trait("Category", "Delete")]
+        public async void Task_Delete_User_Return_OkResult()
+        {
+            //Arrange  
+            testDbContext dbContext = DbContextMocker.GetTestDbContext(nameof(Task_Delete_User_Return_OkResult));
+            UserController controller = new UserController(new UserRepository(dbContext));
+            User user = new User() { Name = "Guido van Rossum", UserName = "grossum", BirthDate = new DateTime(1956, 1, 31), IsActive = true, PassWordHash = "psHash", PassWordSalt = "pwSalt", CreationDate = DateTime.Now };
+            IActionResult existingUser = await controller.AddUser(user);
+            OkObjectResult okResult = existingUser.Should().BeOfType<OkObjectResult>().Subject;
+            Int64 userId = okResult.Value.Should().BeAssignableTo<Int64>().Subject;
+
+            //Act  
+            IActionResult data = await controller.DeleteUser(userId);
+
+            //Assert  
+            Assert.IsType<OkResult>(data);
+        }
+
         #endregion
     }
 }
