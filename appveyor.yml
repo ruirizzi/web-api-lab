@@ -28,6 +28,7 @@ test_script:
   - cmd: dotnet restore ./user-webapitests/user-webapitests.csproj --verbosity m
   # run the unit tests (requires changing into the test directory)
   - cmd: cd user-webapitests
+  - cmd: dotnet build user-webapitests.csproj
   - cmd: cd bin
   - cmd: cd Debug
   - cmd: cd netcoreapp2.1
