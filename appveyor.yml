@@ -31,9 +31,7 @@ test_script:
   - cmd: cd bin
   - cmd: cd Debug
   - cmd: cd netcoreapp2.1
-=======
   - cmd: cd .\user-webapitests\bin\Debug\netcoreapp2.1
->>>>>>> b3af1cd5f871d24355c446f06d9f182823a24b27
   - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUsers_Return_Ok
 on_finish :
   # any cleanup in here
