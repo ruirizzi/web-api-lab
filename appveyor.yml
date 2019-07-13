@@ -23,8 +23,6 @@ artifacts:
    name: user-webapi
    type: WebDeployPackage
 clone_depth: 1
-artifacts:
- - path: 'C:\projects\web-api-lab\testtesults.zip'
 test_script:
   # restore packages for our unit tests
   - cmd: dotnet restore ./user-webapitests/user-webapitests.csproj --verbosity m
@@ -33,21 +31,20 @@ test_script:
   - cmd: cd user-webapitests\bin\Debug\netcoreapp2.1
   #GetUsers
   - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUsers_Return_Ok --logger:trx
-  - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUsers_Return_BadRequestResult --logger:trx
-  - cmd: Compress-Archive TestResults C:\projects\web-api-lab\testtesults.zip
+  # - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUsers_Return_BadRequestResult --logger:trx
   # #GetUser
-  # - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUserById_Return_NotFound
-  # - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUserById_Return_BadRequestResult
-  # - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUserById_MatchResult
+  # - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUserById_Return_NotFound --logger:trx
+  # - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUserById_Return_BadRequestResult --logger:trx
+  # - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUserById_MatchResult --logger:trx
   # #PostUser
-  # - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_PostUser_Return_Ok
-  # - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_PostUser_Return_BadRequestResult
+  # - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_PostUser_Return_Ok --logger:trx
+  # - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_PostUser_Return_BadRequestResult --logger:trx
   # #PutUser
-  # - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_PutUser_Return_MatchData
-  # - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_PutUser_Return_OkResult
+  # - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_PutUser_Return_MatchData --logger:trx
+  # - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_PutUser_Return_OkResult --logger:trx
   # #DeleteUser
-  # - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_Delete_User_Return_OkResult
-
+  # - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_Delete_User_Return_OkResult --logger:trx
+  - cmd: move TestResults c:/projects/web-api-lab/user-webapi/bin/Debug/netcoreapp2.1/publish/
 notifications:
   - provider: Email
   to:
