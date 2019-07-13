@@ -48,9 +48,9 @@ test_script:
 notifications:
   - provider: Email
     to:
-    - ruirizzi@gmail.com
-  subject: 'Build {{status}}'
-  message: "{{message}}, {{commitId}}"
+      - ruirizzi@gmail.com
+    subject: 'Build {{status}}'
+    message: "{{message}}, {{commitId}}"
 
 on_finish :
   # any cleanup in here
