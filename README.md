@@ -52,7 +52,7 @@ Alternatively, you can run the tests simply by ``dotnet test`` from the project'
 - [ASPNet Core WebAPI Testing 1](https://github.com/mmacneil/ApiIntegrationTestSamples/tree/0b3f268b7f300bbf4cb7772b27836f61326850a5)
 - [ASPNet Core WebAPI Testing 2](https://fullstackmark.com/post/20/painless-integration-testing-with-aspnet-core-web-api)
 - [ASPNet Core WebAPI Testing 3](https://www.c-sharpcorner.com/article/crud-operations-unit-testing-in-asp-net-core-web-api-with-xunit/)
-- [[ASPNet Core WebAPI Example](http://www.mukeshkumar.net/articles/dotnetcore/crud-operation-in-asp-net-core-web-api-with-entity-framework-core)
+- [ASPNet Core WebAPI Example](http://www.mukeshkumar.net/articles/dotnetcore/crud-operation-in-asp-net-core-web-api-with-entity-framework-core)
 - [How to use AppVeyor](https://codeshare.co.uk/blog/how-to-set-up-continuous-deployment-for-mvc-and-umbraco-using-appveyor/)
 - [How to setup AppVeyor](https://www.dannyallegrezza.com/blog/2019-03-03-configuring-net-core-2-1-projects-on-appveyor/)
 
