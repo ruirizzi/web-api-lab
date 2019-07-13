@@ -31,7 +31,8 @@ test_script:
   - cmd: cd user-webapitests\bin\Debug\netcoreapp2.1
   #GetUsers
   - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUsers_Return_Ok --logger:trx
-  # - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUsers_Return_BadRequestResult
+  - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUsers_Return_BadRequestResult --logger:trx
+
   # #GetUser
   # - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUserById_Return_NotFound
   # - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUserById_Return_BadRequestResult
@@ -44,6 +45,13 @@ test_script:
   # - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_PutUser_Return_OkResult
   # #DeleteUser
   # - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_Delete_User_Return_OkResult
+
+notifications:
+  - provider: Email
+  to:
+    - ruirizzi@gmail.com
+  subject: 'Build {{status}}'
+  message: "{{message}}, {{commitId}}"
 
 on_finish :
   # any cleanup in here
