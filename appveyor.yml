@@ -23,6 +23,8 @@ artifacts:
    name: user-webapi
    type: WebDeployPackage
 clone_depth: 1
+artifacts:
+ - path: 'C:\projects\web-api-lab\testtesults.zip'
 test_script:
   # restore packages for our unit tests
   - cmd: dotnet restore ./user-webapitests/user-webapitests.csproj --verbosity m
@@ -32,7 +34,7 @@ test_script:
   #GetUsers
   - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUsers_Return_Ok --logger:trx
   - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUsers_Return_BadRequestResult --logger:trx
-
+  - cmd: Compress-Archive TestResults C:\projects\web-api-lab\testtesults.zip
   # #GetUser
   # - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUserById_Return_NotFound
   # - cmd: dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUserById_Return_BadRequestResult
