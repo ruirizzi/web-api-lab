@@ -25,6 +25,7 @@ After installing Docker on your system and certifying that it is running, you sh
 ~\web-api-lab\docker-compile up
 ```
 The result should look like this:
+
 ![docker-compile up result](https://imgur.com/APgic2E.png)
 
 After that is done, you can reach the ``/user`` endpoint on your ``localhost/api/user`` and get this (I'm using Postman to test it):
@@ -40,7 +41,7 @@ You're done! You can now run `GET`, `POST`, `PUT` and `DELETE` data from/to your
 
 All the tests are on the ``user-webapitests`` project inside the folder with the same name.
 
-To run the tests, you can simply ``~\dotnet run`` inside that folder. Also, if using Visual Studio 2017+, you can open the whole solution and run tests on the ``user-webapitests`` project:
+If using Visual Studio 2017+, you can open the whole solution and run tests on the ``user-webapitests`` project:
 
 ![how to run tests from solution explorer](https://i.imgur.com/jGGFtGL.png)
 
