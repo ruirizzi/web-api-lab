@@ -47,7 +47,7 @@ test_script:
   - cmd: move TestResults c:/projects/web-api-lab/user-webapi/bin/Debug/netcoreapp2.1/publish/
 notifications:
   - provider: Email
-  to:
+    to:
     - ruirizzi@gmail.com
   subject: 'Build {{status}}'
   message: "{{message}}, {{commitId}}"
