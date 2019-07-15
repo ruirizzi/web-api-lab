@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -12,6 +13,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using userwebapi.Repositories;
 using userwebapi.Models;
+using Microsoft.Extensions.Caching.Redis;
+
 
 namespace userwebapi
 {
@@ -31,6 +34,11 @@ namespace userwebapi
 
             services.AddDbContext<TestDbContext>(item => item.UseSqlServer(Configuration.GetConnectionString("testDb")));
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddDistributedRedisCache(options =>
+            {
+                options.Configuration = Dns.GetHostAddressesAsync("web-api-lab_redis_1").Result.FirstOrDefault().ToString();
+                options.InstanceName = "redisInstance";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

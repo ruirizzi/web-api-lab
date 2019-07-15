@@ -55,6 +55,7 @@ Alternatively, you can run the tests simply by ``dotnet test`` from the project'
 - [ASPNet Core WebAPI Example](http://www.mukeshkumar.net/articles/dotnetcore/crud-operation-in-asp-net-core-web-api-with-entity-framework-core)
 - [How to use AppVeyor](https://codeshare.co.uk/blog/how-to-set-up-continuous-deployment-for-mvc-and-umbraco-using-appveyor/)
 - [How to setup AppVeyor](https://www.dannyallegrezza.com/blog/2019-03-03-configuring-net-core-2-1-projects-on-appveyor/)
+- [Deploy REDIS](https://medium.com/volosoft/docker-web-farm-example-with-using-redis-haproxy-and-asp-net-core-web-api-8e3f81217fd2)
 
 ## License
 [![badge](https://img.shields.io/github/license/ruirizzi/web-api-lab.svg?color=blue&style=popout-square)](https://github.com/ruirizzi/web-api-lab/blob/master/LICENSE)
