@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace userwebapi.Models
@@ -13,5 +14,10 @@ namespace userwebapi.Models
         public String PassWordSalt { get; set; }
         public DateTime? CreationDate { get; set; }
         public Boolean? IsActive { get; set; }
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
     }
 }

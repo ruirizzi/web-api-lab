@@ -136,21 +136,6 @@ namespace userwebapitests
         }
 
         [Fact, Trait("Category", "Post")]
-        public async void Task_PostUser_InvalidData_Return_BadRequest()
-        {
-            //Arrange
-            var dbContext = DbContextMocker.GetTestDbContext(nameof(Task_PostUser_InvalidData_Return_BadRequest));
-            var controller = new UserController(new UserRepository(dbContext));
-            User user = new User();
-
-            //Act
-            IActionResult data = await controller.AddUser(user);
-
-            //Assert
-            Assert.IsType<BadRequestResult>(data);
-        }
-
-        [Fact, Trait("Category", "Post")]
         public async void Task_PostUser_Return_BadRequestResult()
         {
             //Arrange
