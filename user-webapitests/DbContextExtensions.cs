@@ -7,7 +7,7 @@ namespace userwebapitests
 {
     public static class DbContextExtensions
     {
-        public static void Seed(this testDbContext dbContext)
+        public static void Seed(this TestDbContext dbContext)
         {
             dbContext.Database.EnsureDeleted();
             dbContext.Database.EnsureCreated();

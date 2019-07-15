@@ -8,15 +8,15 @@ namespace userwebapitests
 {
     public static class DbContextMocker
     {
-        public static testDbContext GetTestDbContext(String dbName)
+        public static TestDbContext GetTestDbContext(String dbName)
         {
             // Create options for DbContext instance
-            var options = new DbContextOptionsBuilder<testDbContext>()
+            DbContextOptions<TestDbContext> options = new DbContextOptionsBuilder<TestDbContext>()
                 .UseInMemoryDatabase(dbName)
                 .Options;
 
             // Create instance of DbContext
-            var dbContext = new testDbContext(options);
+            TestDbContext dbContext = new TestDbContext(options);
 
             // Add entities in memory
             dbContext.Seed();

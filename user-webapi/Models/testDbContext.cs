@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace userwebapi.Models
 {
-    public partial class testDbContext : DbContext
+    public partial class TestDbContext : DbContext
     {
-        public testDbContext()
+        public TestDbContext()
         {
         }
 
-        public testDbContext(DbContextOptions<testDbContext> options)
+        public TestDbContext(DbContextOptions<TestDbContext> options)
             : base(options)
         {
         }

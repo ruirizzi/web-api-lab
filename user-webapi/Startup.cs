@@ -29,7 +29,7 @@ namespace userwebapi
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddDbContext<testDbContext>(item => item.UseSqlServer(Configuration.GetConnectionString("testDb")));
+            services.AddDbContext<TestDbContext>(item => item.UseSqlServer(Configuration.GetConnectionString("testDb")));
             services.AddScoped<IUserRepository, UserRepository>();
         }
 

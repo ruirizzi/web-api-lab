@@ -43,6 +43,22 @@ namespace userwebapitests
             Assert.IsType<BadRequestResult>(data);
         }
         [Fact, Trait("Category", "Get")]
+        public async void Task_GetUserById_Return_OkResult()
+        {
+            //Arrange  
+            var dbContext = DbContextMocker.GetTestDbContext(nameof(Task_GetUserById_Return_OkResult));
+            var controller = new UserController(new UserRepository(dbContext));
+            Int64 userId = 1;
+
+            //Act  
+            IActionResult data = await controller.GetUser(userId);
+
+            //Assert  
+            Assert.IsType<OkObjectResult>(data);
+        }
+
+
+        [Fact, Trait("Category", "Get")]
         public async void Task_GetUserById_MatchResult()
         {
             //Arrange  
@@ -96,10 +112,10 @@ namespace userwebapitests
 
         #region PostTests
         [Fact, Trait("Category", "Post")]
-        public async void Task_PostUser_Return_Ok()
+        public async void Task_PostUser_Return_OkResult()
         {
             //Arrange
-            var dbContext = DbContextMocker.GetTestDbContext(nameof(Task_PostUser_Return_Ok));
+            var dbContext = DbContextMocker.GetTestDbContext(nameof(Task_PostUser_Return_OkResult));
             var controller = new UserController(new UserRepository(dbContext));
             User user = new User()
             {
@@ -118,6 +134,22 @@ namespace userwebapitests
             //Assert
             Assert.IsType<OkObjectResult>(data);
         }
+
+        [Fact, Trait("Category", "Post")]
+        public async void Task_PostUser_InvalidData_Return_BadRequest()
+        {
+            //Arrange
+            var dbContext = DbContextMocker.GetTestDbContext(nameof(Task_PostUser_InvalidData_Return_BadRequest));
+            var controller = new UserController(new UserRepository(dbContext));
+            User user = new User();
+
+            //Act
+            IActionResult data = await controller.AddUser(user);
+
+            //Assert
+            Assert.IsType<BadRequestResult>(data);
+        }
+
         [Fact, Trait("Category", "Post")]
         public async void Task_PostUser_Return_BadRequestResult()
         {
@@ -149,7 +181,7 @@ namespace userwebapitests
         public async void Task_PutUser_Return_OkResult()
         {
             //Arrange
-            testDbContext dbContext = DbContextMocker.GetTestDbContext(nameof(Task_PutUser_Return_OkResult));
+            TestDbContext dbContext = DbContextMocker.GetTestDbContext(nameof(Task_PutUser_Return_OkResult));
             UserController controller = new UserController(new UserRepository(dbContext));
             User user = new User() { Name = "Guido van Rossum", UserName = "grossum", BirthDate = new DateTime(1956, 1, 31), IsActive = true, PassWordHash = "psHash", PassWordSalt = "pwSalt", CreationDate = DateTime.Now };
 
@@ -171,7 +203,7 @@ namespace userwebapitests
         public async void Task_PutUser_Return_MatchData()
         {
             //Arrange
-            testDbContext dbContext = DbContextMocker.GetTestDbContext(nameof(Task_PutUser_Return_MatchData));
+            TestDbContext dbContext = DbContextMocker.GetTestDbContext(nameof(Task_PutUser_Return_MatchData));
             UserController controller = new UserController(new UserRepository(dbContext));
             User user = new User() { Name = "Guido van Rossum", UserName = "grossum", BirthDate = new DateTime(1956, 1, 31), IsActive = true, PassWordHash = "psHash", PassWordSalt = "pwSalt", CreationDate = DateTime.Now };
 
@@ -204,18 +236,42 @@ namespace userwebapitests
         public async void Task_Delete_User_Return_OkResult()
         {
             //Arrange  
-            testDbContext dbContext = DbContextMocker.GetTestDbContext(nameof(Task_Delete_User_Return_OkResult));
+            TestDbContext dbContext = DbContextMocker.GetTestDbContext(nameof(Task_Delete_User_Return_OkResult));
             UserController controller = new UserController(new UserRepository(dbContext));
-            User user = new User() { Name = "Guido van Rossum", UserName = "grossum", BirthDate = new DateTime(1956, 1, 31), IsActive = true, PassWordHash = "psHash", PassWordSalt = "pwSalt", CreationDate = DateTime.Now };
-            IActionResult existingUser = await controller.AddUser(user);
-            OkObjectResult okResult = existingUser.Should().BeOfType<OkObjectResult>().Subject;
-            Int64 userId = okResult.Value.Should().BeAssignableTo<Int64>().Subject;
 
             //Act  
-            IActionResult data = await controller.DeleteUser(userId);
+            IActionResult data = await controller.DeleteUser(1);
 
             //Assert  
             Assert.IsType<OkResult>(data);
+        }
+
+        [Fact, Trait("Category", "Delete")]
+        public async void Task_Delete_User_Return_NotFound()
+        {
+            //Arrange  
+            TestDbContext dbContext = DbContextMocker.GetTestDbContext(nameof(Task_Delete_User_Return_NotFound));
+            UserController controller = new UserController(new UserRepository(dbContext));
+
+            //Act  
+            IActionResult data = await controller.DeleteUser(5);
+
+            //Assert  
+            Assert.IsType<NotFoundResult>(data);
+        }
+
+        [Fact, Trait("Category", "Delete")]
+        public async void Task_Delete_User_Return_BadRequest()
+        {
+            //Arrange  
+            TestDbContext dbContext = DbContextMocker.GetTestDbContext(nameof(Task_Delete_User_Return_BadRequest));
+            UserController controller = new UserController(new UserRepository(dbContext));
+
+            //Act  
+            IActionResult data = await controller.DeleteUser(null);
+
+            //Assert  
+            Assert.IsType<BadRequestResult>(data);
         }
 
         #endregion

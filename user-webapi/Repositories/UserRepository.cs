@@ -9,8 +9,8 @@ namespace userwebapi.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        testDbContext db;
-        public UserRepository(testDbContext _db)
+        TestDbContext db;
+        public UserRepository(TestDbContext _db)
         {
             db = _db;
         }
