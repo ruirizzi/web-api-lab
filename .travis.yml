@@ -1,0 +1,19 @@
+language: csharp
+mono: none
+dotnet: 2.1
+install:
+  - dotnet restore
+script:
+  - dotnet build
+  - dotnet publish
+  - cd user-webapitests/bin/Debug/netcoreapp2.1
+  - dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUsers_Return_Ok --logger:trx
+  - dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUsers_Return_BadRequestResult --logger:trx
+  - dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUserById_Return_NotFound --logger:trx
+  - dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUserById_Return_BadRequestResult --logger:trx
+  - dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_GetUserById_MatchResult --logger:trx
+  - dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_PostUser_Return_Ok --logger:trx
+  - dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_PostUser_Return_BadRequestResult --logger:trx
+  - dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_PutUser_Return_MatchData --logger:trx
+  - dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_PutUser_Return_OkResult --logger:trx
+  - dotnet vstest ./user-webapitests.dll /Tests:userwebapitests.UserControllerUnitTest.Task_Delete_User_Return_OkResult --logger:trx
