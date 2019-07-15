@@ -48,7 +48,10 @@ After installing Docker on your system and certifying that it is running, you sh
 ~\web-api-lab\docker-compile build
 ~\web-api-lab\docker-compile up
 ```
-The result should look like this:![docker-compile up result](https://imgur.com/xzvBiF4.png)
+The result should look like this:
+
+![docker-compile up result](https://imgur.com/xzvBiF4.png)
+
 After that is done, you can reach the ``/user`` endpoint on your ``localhost/api/user`` and get this (I'm using [Postman](https://www.getpostman.com/) to test it):
 
 ![user list response](https://imgur.com/kWENhZa.png)
@@ -100,6 +103,7 @@ The result is a `string` of the desired entry:
 ![user string result](https://imgur.com/YFybD8i.png)
 
 In case a not-existing `id` is sent, the result will be:
+
 ![id not found result](https://imgur.com/XQGfUNo.png)
 
 ### Removing Cached Data
