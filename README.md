@@ -5,6 +5,8 @@
 
 [![Build status](https://img.shields.io/appveyor/ci/HumanAftrAll/web-api-lab.svg?style=flat-square)](https://ci.appveyor.com/project/HumanAftrAll/web-api-lab) [![Master status](https://img.shields.io/appveyor/ci/HumanAftrAll/web-api-lab/master.svg?style=flat-square&label=master)](https://ci.appveyor.com/project/HumanAftrAll/web-api-lab/branch/master) [![Test Status](https://img.shields.io/appveyor/tests/HumanAftrAll/web-api-lab.svg?style=flat-square)](https://ci.appveyor.com/project/HumanAftrAll/web-api-lab/branch/master/tests)
 
+[![Build Status](https://travis-ci.org/ruirizzi/web-api-lab.svg?branch=master)](https://travis-ci.org/ruirizzi/web-api-lab)
+
 >Lab repository to test out Docker webapi develoment, testing and CI.
 
   
