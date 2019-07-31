@@ -45,14 +45,14 @@ This will allow you to correctly build the WebAPI Docker container.
 ### Runing the Docker Containers
 
 In order to run the Docker image, you **must** have Docker installed in you [**Windows**](https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe), [**Linux**](https://docs.docker.com/install/linux/docker-ce/debian/) or [**Mac**](https://download.docker.com/mac/stable/Docker.dmg).
-After installing Docker on your system and certifying that it is running, you should clone this repository and then:
+After installing Docker on your system and certifying that it is running, you should:
 ```bash
-~\web-api-lab\docker-compile build
-~\web-api-lab\docker-compile up
+~\web-api-lab\docker-compose build
+~\web-api-lab\docker-compose up
 ```
 The result should look like this:
 
-![docker-compile up result](https://imgur.com/xzvBiF4.png)
+![docker-compose up result](https://imgur.com/xzvBiF4.png)
 
 After that is done, you can reach the ``/user`` endpoint on your ``localhost/api/user`` and get this (I'm using [Postman](https://www.getpostman.com/) to test it):
 
